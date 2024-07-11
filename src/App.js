@@ -1,25 +1,41 @@
-import logo from './logo.svg';
-import './App.css';
+// src/App.js
+import React, { useState } from 'react';
+import Form from './comp/Form';
+import Display from './comp/Display';
+import './index.css';
 
-function App() {
+const App = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    age: '',
+    gender: ''
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.email || !formData.age || !formData.gender) {
+      alert('Please fill in all fields.');
+      return;
+    }
+    alert('Form submitted successfully!');
+  };
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="app-container">
+      <h1>User Information Form</h1>
+      <Form formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+      <Display formData={formData} />
     </div>
   );
-}
+};
 
 export default App;
