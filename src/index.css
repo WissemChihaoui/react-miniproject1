@@ -15,7 +15,6 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
   }
   
   .form-container {
@@ -29,6 +28,12 @@ body {
   .form-group label {
     display: block;
     margin-bottom: 5px;
+
+    font-weight: 700;
+  }
+  .form-group span{
+    font-size: 14px;
+    color: rgb(254, 38, 38);
   }
   
   .form-group input,
@@ -45,6 +50,7 @@ body {
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    width: 100%;
   }
   
   .btn-submit:hover {

@@ -11,9 +11,12 @@ const App = () => {
     age: '',
     gender: ''
   });
+  const [isSubmitted, setIsSubmitted] = useState(false)
 
   const handleChange = (e) => {
     const { name, value } = e.target;
+    //const name = e.target.name
+    //const value = e.target.value
     setFormData({
       ...formData,
       [name]: value
@@ -22,17 +25,16 @@ const App = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!formData.name || !formData.email || !formData.age || !formData.gender) {
-      alert('Please fill in all fields.');
-      return;
+    setIsSubmitted(true)
+    if (formData.name && formData.email && formData.age && formData.gender) {
+      alert('Form Submitted');
     }
-    alert('Form submitted successfully!');
   };
 
   return (
     <div className="app-container">
       <h1>User Information Form</h1>
-      <Form formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} />
+      <Form formData={formData} handleChange={handleChange} handleSubmit={handleSubmit} isSubmitted={isSubmitted}/>
       <Display formData={formData} />
     </div>
   );

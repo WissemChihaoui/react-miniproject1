@@ -1,7 +1,7 @@
 // src/Form.js
 import React from 'react';
 
-const Form = ({ formData, handleChange, handleSubmit }) => {
+const Form = ({ formData, handleChange, handleSubmit, isSubmitted }) => {
   return (
     <form onSubmit={handleSubmit} className="form-container">
       <div className="form-group">
@@ -11,8 +11,9 @@ const Form = ({ formData, handleChange, handleSubmit }) => {
           name="name"
           value={formData.name}
           onChange={handleChange}
-          required
+          
         />
+        {!formData.name && isSubmitted && <span>Name is required</span>}
       </div>
       <div className="form-group">
         <label>Email:</label>
@@ -21,8 +22,9 @@ const Form = ({ formData, handleChange, handleSubmit }) => {
           name="email"
           value={formData.email}
           onChange={handleChange}
-          required
+          
         />
+         {!formData.email && isSubmitted && <span>email is required</span>}
       </div>
       <div className="form-group">
         <label>Age:</label>
@@ -31,16 +33,18 @@ const Form = ({ formData, handleChange, handleSubmit }) => {
           name="age"
           value={formData.age}
           onChange={handleChange}
-          required
+          
         />
+         {!formData.age && isSubmitted && <span>age is required</span>}
       </div>
       <div className="form-group">
         <label>Gender:</label>
-        <select name="gender" value={formData.gender} onChange={handleChange} required>
+        <select name="gender" value={formData.gender} onChange={handleChange} >
           <option value="">Select Gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
         </select>
+        {!formData.gender && isSubmitted && <span>gender is required</span>}
       </div>
       <button type="submit" className="btn-submit">Submit</button>
     </form>
